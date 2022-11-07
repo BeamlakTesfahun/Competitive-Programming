@@ -1,14 +1,20 @@
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # using answer as heap
-        answer = []
-        d = {}
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        dic = {}
+        result = []
         for i in nums:
-            d[i] = d.get(i,0) + 1
-        for key, value in d.items():
-            if len(answer) < k:
-                heapq.heappush(answer,[value,key])
-            else:
-                heapq.heappushpop(answer, [value,key])
-        return [key for value,key in answer]
+            dic[i] = dic.get(i,0) + 1
+            # sorted(iterable,key,reverse)
+        #print(dic)
+        list1 = sorted(dic,key= lambda x:dic[x])
+        print(list1)
+        while k > 0:
+            result.append(list1.pop()) 
+            k -= 1
+        return result
         
