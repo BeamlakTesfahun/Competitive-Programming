@@ -1,11 +1,11 @@
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         stack = []
-        N = len(popped)
-        i = 0 # pointer of pop
-        for p in pushed:
-            stack.append(p)
-            while stack and i<N and stack[-1] == popped[i]:
-                i +=1 
+        j = 0
+        for i in range(len(pushed)):
+            stack.append(pushed[i])
+            while stack and stack[-1] == popped[j]:
                 stack.pop()
-        return stack == []
+                j += 1
+        return True if not stack else False
+        
