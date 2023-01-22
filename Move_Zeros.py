@@ -3,10 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left = 0
-        for right in range(len(nums)):
-            # if number is non zero
-            if nums[right]:
-                nums[left], nums[right] = nums[right], nums[left]
-                left += 1
-        return nums
+        for i in nums:
+            if i == 0:
+                nums.remove(i)
+                nums.append(i)
